@@ -1,3 +1,11 @@
+{ length: 86799, byteLength: 86799 }
+{ bytes: 86799 }
+{ bytes: 36976 }
+{ bytes: 11083 }
+{ length: 394384, byteLength: 394384 }
+{ bytes: 394384 }
+{ bytes: 288775 }
+{ bytes: 54825 }
 # Code size comparison
 
 This is a simple code size comparison between protobuf-es and google-protobuf.
