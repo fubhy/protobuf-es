@@ -1,7 +1,7 @@
-{ length: 86799, byteLength: 86799 }
-{ bytes: 86799 }
-{ bytes: 36976 }
-{ bytes: 11083 }
+{ length: 87033, byteLength: 87033 }
+{ bytes: 87033 }
+{ bytes: 37025 }
+{ bytes: 11104 }
 { length: 394384, byteLength: 394384 }
 { bytes: 394384 }
 { bytes: 288775 }
@@ -18,5 +18,5 @@ server would usually do.
 
 | code generator      | bundle size             | minified               | compressed         |
 |---------------------|------------------------:|-----------------------:|-------------------:|
-| protobuf-es         | 86,799 b      | 36,976 b | 11,083 b |
+| protobuf-es         | 87,033 b      | 37,025 b | 11,104 b |
 | protobuf-javascript | 394,384 b  | 288,775 b | 54,825 b |
