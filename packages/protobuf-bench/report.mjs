@@ -1,5 +1,6 @@
 import { buildSync } from "esbuild";
 import { gzipSync } from "fflate";
+import { writeFileSync } from "fs";
 
 const protobufEs = gather("src/entry-protobuf-es.ts");
 const googleProtobuf = gather("src/entry-google-protobuf.js");
@@ -22,6 +23,8 @@ server would usually do.
 
 function gather(entryPoint) {
   const bundle = build(entryPoint, false, "esm");
+  writeFileSync("bundle.js", bundle);
+  console.log({ length: bundle.length, byteLength: bundle.byteLength });
   const bundleMinified = build(entryPoint, true, "esm");
   const compressed = gzipSync(bundleMinified, {
     mtime: 0,
@@ -52,5 +55,6 @@ function build(entryPoint, minify, format) {
 }
 
 function formatSize(bytes) {
+  console.log({ bytes });
   return new Intl.NumberFormat().format(bytes) + " b";
 }

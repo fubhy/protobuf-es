@@ -10,6 +10,8 @@ module.exports = {
   ignorePatterns: [
     "packages/*/dist/**",
     "node_modules/**",
+    "**/report.mjs",
+    "**/bundle.js",
   ],
   plugins: ["@typescript-eslint", "node", "import"],
   // Rules and settings that do not require a non-default parser
