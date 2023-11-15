@@ -14,7 +14,12 @@
 
 import { describe, expect, test } from "@jest/globals";
 import { readFileSync } from "fs";
-import { createDescriptorSet, proto3, ScalarType } from "@bufbuild/protobuf";
+import {
+  createDescriptorSet,
+  Edition,
+  proto3,
+  ScalarType,
+} from "@bufbuild/protobuf";
 import { JsonNamesMessage } from "./gen/ts/extra/msg-json-names_pb.js";
 import { MapsMessage } from "./gen/ts/extra/msg-maps_pb.js";
 import { RepeatedScalarValuesMessage } from "./gen/ts/extra/msg-scalar_pb.js";
@@ -29,6 +34,26 @@ const fdsBytes = readFileSync("./descriptorset.bin");
 
 describe("DescriptorSet", () => {
   const set = createDescriptorSet(fdsBytes);
+  test("proto2", () => {
+    const proto2File = set.files.find((f) => f.name == "extra/proto2");
+    expect(proto2File).toBeDefined();
+    expect(proto2File?.syntax).toBe("proto2");
+    expect(proto2File?.edition).toBe(Edition.EDITION_PROTO2);
+  });
+  test("proto3", () => {
+    const proto3File = set.files.find((f) => f.name == "extra/proto3");
+    expect(proto3File).toBeDefined();
+    expect(proto3File?.syntax).toBe("proto3");
+    expect(proto3File?.edition).toBe(Edition.EDITION_PROTO3);
+  });
+  test("edition2023", () => {
+    const edition2023File = set.files.find(
+      (f) => f.name == "editions/edition2023-default-features",
+    );
+    expect(edition2023File).toBeDefined();
+    expect(edition2023File?.syntax).toBe("editions");
+    expect(edition2023File?.edition).toBe(Edition.EDITION_2023);
+  });
   test("knows extension", () => {
     const ext = set.extensions.get(
       "protobuf_unittest.optional_int32_extension",

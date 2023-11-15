@@ -75,6 +75,7 @@ export type { IMessageTypeRegistry } from "./type-registry.js";
 export { createRegistry } from "./create-registry.js";
 export { createRegistryFromDescriptors } from "./create-registry-from-desc.js";
 export { toPlainMessage } from "./to-plain-message.js";
+export { FeatureResolver } from "./feature-resolver.js";
 
 // ideally, we would export these types with sub-path exports:
 export * from "./google/protobuf/compiler/plugin_pb.js";
